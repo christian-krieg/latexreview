@@ -178,3 +178,14 @@ This results in the following PDF:
 
 .. image:: docs/fig/diff-bob.png
 
+To view all changes made since he submitted his original draft for Alice to
+review, Bob sets the ``COMMIT`` variable to the tag he created at submission
+time::
+
+   make diff COMMIT=orig-draft
+
+This results in the following PDF:
+
+.. image:: docs/fig/diff-bob-all.png
+
+
