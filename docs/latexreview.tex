@@ -1,0 +1,218 @@
+% !TeX spellcheck = en_US
+%----------------------------------------------------------------------------
+%
+%   This LaTeX template was created by Christian Krieg
+%       <christian.krieg@alumni.tuwien.ac.at>
+%
+% This template is licensed under the following license: Attribution 4.0
+% International (CC BY 4.0)
+%
+%
+% You are free to:
+%
+%   1. Share --- Copy and redistribute the material in any medium or format
+%   2. Adapt --- Remix, transform, and build upon the material for any purpose,
+%           even commercially.
+%
+% This license is acceptable for Free Cultural Works.
+%
+% The licensor cannot revoke these freedoms as long as you follow the license
+% terms.
+%
+% The entire license text is available at:
+%   https://creativecommons.org/licenses/by/4.0/legalcode
+%
+%   May 2021
+%
+%----------------------------------------------------------------------------
+%
+\documentclass[%
+	a4paper,%
+	twoside%
+] {article}
+%
+%----------------------------------------------------------------------------
+%
+% Title
+%
+\title{\LaTeX{} review made transparent with \emph{todonotes}, and \emph{git-latexdiff}}
+%
+%----------------------------------------------------------------------------
+%
+% Author
+%
+\author{Christian Krieg <christian@drkrieg.at>}
+%
+%-----------------------------------------------------------------------------
+%
+% Use the 'Libertine' font type
+%
+\usepackage{libertine}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+%
+%----------------------------------------------------------------------------
+%
+% Set page margins - original: 2cm
+%
+\usepackage{geometry}
+\geometry{
+    left = 2cm,
+    right = 2cm,
+    top = 2cm,
+    bottom = 2cm,
+    marginparwidth=1.75cm,
+}
+%
+%----------------------------------------------------------------------------
+%
+% Set up glossary
+%
+\usepackage{glossaries}
+\newglossaryentry{dvi}{
+  name={DVI},
+  description={Device-independent},
+  text={DVI},
+  first={device-independent (DVI)},
+}
+\newglossaryentry{pdf}{
+  name={PDF},
+  description={Portable document format},
+  text={PDF},
+  first={portable document format (PDF)},
+}
+%\newglossaryentry{}{
+%  name={},
+%  description={},
+%  text={},
+%  first={},
+%}
+%
+%----------------------------------------------------------------------------
+%
+% Set line spacing
+%
+\usepackage{setspace}
+\setstretch{1.5}
+%
+%----------------------------------------------------------------------------
+%
+% Set paragraph: No indentation, but include an empty line
+%
+\usepackage[parfill]{parskip}
+%
+%----------------------------------------------------------------------------
+%
+% Commands to set up review comments
+%
+\usepackage{newtodo}
+
+\newtodo{alice}{purple}
+\newtodo{bob}{yellow}
+%
+%----------------------------------------------------------------------------
+%
+% Use the cleverref package -- Load this package as the very last!
+%
+\usepackage{cleveref}
+%
+%----------------------------------------------------------------------------
+%
+% Document body
+%
+\usepackage{lipsum}
+\begin{document}
+
+\maketitle
+
+\LaTeX{} provides a great environment for writing scientific texts. With \LaTeX{},
+it is very convenient to set mathematical equations, maintain references to a
+bibliography, or define and use glossary terms throughout any document. While
+\LaTeX{} compiles \LaTeX{} code to a \gls{dvi} file, the pre-dominant use case today
+is to compile \LaTeX{} code into a  \gls{pdf} file (see \Cref{fig:compile-pdf}).
+
+\begin{figure}[htp]
+    \centering
+    \begin{tikzpicture}
+        \node (pdflatex) [draw, minimum height=1cm, minimum width=2cm] {pdflatex};
+        \draw [<-] (pdflatex.west) -- ++(-1cm,0) node[left]{\LaTeX{} input};
+        \draw [->] (pdflatex.east) -- ++(1cm,0) node[right]{\gls{pdf} output};
+    \end{tikzpicture}
+    \caption{Compiling \LaTeX{} into \protect\gls{pdf} format}
+    \label{fig:compile-pdf}
+\end{figure}
+
+In order to maintain high quality and to examine the scientific code of conduct,
+any scientific text is subject to review. In the pre-dominant use case of
+generating \gls{pdf} files from \LaTeX{} files, there are two possibilities:
+
+\begin{enumerate}
+    \item{Review the PDF output}
+    \item{Review \LaTeX{} input}
+\end{enumerate}
+
+
+Both review options have their advantages and their disadvantages, and it does
+not seem to be obvious that one option outperforms the other option.
+\Cref{tbl:review-options} summarizes advantages and disadvantages.
+
+\renewcommand{\arraystretch}{1.5}
+\begin{table}[htp]
+    \centering
+    \setstretch{1}
+    \caption{Advantages and disadvantages of reviewing \LaTeX{} input or
+        \protect\gls{pdf} output}
+    \label{tbl:review-options}
+%    \begin{tabular}{lm{5cm}m{5cm}}
+    \begin{tabular}{ccc}
+    \hline
+    \textbf{Target} & \textbf{Advantages} & \textbf{Disadvantages} \\
+    \hline
+    \LaTeX{}
+        & \begin{minipage}{5cm}
+            \begin{itemize}
+                \item{Directly editable}
+            \end{itemize}
+          \end{minipage}
+        & \begin{minipage}{10cm}
+            \begin{itemize}
+                \item{Appearance of end product is not visible (e.g., figures)}
+                \item{If edited directly, it is not clear what has been changed
+                     by the reviewer}
+            \end{itemize}
+          \end{minipage}
+        \\[2em]
+    \gls{pdf}
+        & \begin{minipage}{5cm}
+            \begin{itemize}
+                \item{Comments can be made directly in the end product}
+                \item{Nearly every PDF viewer supports to include annotations}
+            \end{itemize}
+          \end{minipage}
+        & \begin{minipage}{10cm}
+            \begin{itemize}
+                \item{\gls{pdf} annotations don't provide an overview over
+                    all comments}
+                \item{It is hardly possible to reply to comments}
+                \item{It is hard to maintain reviews of one document by multiple
+                    authors}
+                \item{It is nearly impossible to track annotations in revision
+                    control systems (because \gls{pdf} files are binary)}
+                \item{It is cumbersome to fix minor issues directly (e.g.,
+                    wording, commas, etc.). Instead, a review annotation must be
+                    given}
+            \end{itemize}
+          \end{minipage}
+        \\
+    \hline
+    \end{tabular}
+\end{table}
+
+ As a
+plain text format, it is very convenient to track \LaTeX{} documents with revision
+control systems
+
+
+\end{document}
+%
+%----------------------------------------------------------------------------
