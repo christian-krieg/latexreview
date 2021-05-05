@@ -41,6 +41,14 @@ and drafts a first version to describe the problem (literally copied from
    of the river, leaving each purchase intact. How did he do it?
    \end{document}
 
+Bob builds his document using ``make``::
+
+   make pdf
+
+The result looks like this:
+
+.. image:: docs/fig/orig-draft.png
+
 Bob creates a git repository, adds his file ``main.tex``, and commits his
 changes::
 
@@ -55,10 +63,6 @@ In addition, Bob tags the original draft::
 Now, lets have a look at the resulting PDF file::
 
    make pdf
-
-The resulting PDF file looks like this:
-
-.. image:: docs/fig/orig-draft.png
 
 Now, Alice adds some review comments::
 
