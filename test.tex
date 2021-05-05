@@ -1,5 +1,5 @@
 \documentclass[a4paper,twoside] {article}
-\title{The wolf, the goat and the cabbage }
+\title{The wolf, the goat,\alice{Adding the Oxford comma here} and the cabbage}
 \author{Bob Doe}
 
 \usepackage{newtodo}
@@ -9,14 +9,23 @@
 \begin{document}
 \maketitle
 
-Once upon a time a farmer went to a market and purchased a wolf, a goat, and
-a cabbage. On his way home, the farmer came to the bank of a river and rented
-a boat. But crossing the river by boat, the farmer could carry only himself
-and a single one of his purchases: the wolf, the goat, or the cabbage.
+\alice[inline]{ \textbf{General remarks:}
+    \begin{itemize}
+        \item{Let's transform everything to present tense; I already did that.}
+        \item{I think the text is short enough to have one paragraph instead of
+            three paragraphs. I changed that.}
+    \end{itemize}
+}
 
-If left unattended together, the wolf would eat the goat, or the goat would
-eat the cabbage.
-
-The farmer's challenge was to carry himself and his purchases to the far bank
-of the river, leaving each purchase intact. How did he do it?
+\alicehl{A farmer}{Shall we give him a name?} goes to a market and purchases a
+wolf, a goat, and a cabbage. On his way home, the farmer comes to the bank of a
+river and rents a boat. But crossing the river by boat, the farmer could carry
+only himself and a single one of his purchases: the wolf, the goat, or the
+cabbage.
+%
+If left unattended together, the wolf would eat the goat, or the goat would eat
+the cabbage.
+%
+The farmer's challenge is to carry himself and his purchases to the far bank of
+the river, leaving each purchase intact. How does he do it?
 \end{document}
