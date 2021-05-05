@@ -17,10 +17,31 @@ The body text of the original draft is (adapted from
 `Wikipeda <https://en.wikipedia.org/wiki/Wolf,_goat_and_cabbage_problem>`__)
 as follows:
 
-.. literalinclude:: test.tex
-   :language: tex
+.. code-block:: tex
    :linenos:
 
+   \documentclass[a4paper,twoside] {article}
+   \title{The wolf, the goat and the cabbage }
+   \author{Bob Doe}
+   
+   \usepackage{newtodo}
+   \newtodo{alice}{purple}
+   \newtodo{bob}{yellow}
+   
+   \begin{document}
+   \maketitle
+   
+   Once upon a time a farmer went to a market and purchased a wolf, a goat, and
+   a cabbage. On his way home, the farmer came to the bank of a river and rented
+   a boat. But crossing the river by boat, the farmer could carry only himself
+   and a single one of his purchases: the wolf, the goat, or the cabbage.
+   
+   If left unattended together, the wolf would eat the goat, or the goat would
+   eat the cabbage.
+   
+   The farmer's challenge was to carry himself and his purchases to the far bank
+   of the river, leaving each purchase intact. How did he do it?
+   \end{document}
 
 We commit our changes::
 
