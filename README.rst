@@ -135,14 +135,20 @@ The result is:
 Alice commits her changes into a new branch, tags the commit, and pushes the new
 branch to the remote repository::
 
-   git checkout -b alice-review1_2021-05
+   git checkout -b alice-bob
    git commit -m "Added review comments" main.tex
-   git tag -a -m "Review 1 by Alice of orginal draft of 'main' document" review-alice1
-   git push origin alice-bob-review1
+   git tag -a -m "Review 1 by Alice of orginal draft of 'main' document" alice-bob-review1
+   git push origin alice-bob
    git push --tags
 
 
-Bob pulls the repository, looks at the reviewed document, and replies to one of
+Bob pulls the repository, and checks out the branch created by Alice::
+
+   git pull origin alice-bob
+   git checkout alice-bob
+
+
+Bob then looks at the reviewed document, and replies to one of
 Alice's comments. He thinks that *Bob* would be a very good name for the farmer,
 so he suggests that in a review comment::
 
@@ -203,3 +209,10 @@ This results in the following PDF:
 
 Bob is satisfied, and he commits his reply to Alice's review. Again, he creates
 a tag ``reply1`` and pushes the result to the remote repository::
+
+   git commit -m "Reply to Alice's review 1" main.tex
+   git tag -a -m "Reply to Alice's review1" alice-bob-reply1
+   git push --tags
+   git push origin alice-bob
+
+
