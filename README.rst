@@ -21,4 +21,8 @@ We tag the original draft::
 
     git tag -a -m "Orginal draft of 'test' document" orig-draft
 
+Now, lets have a look at the resulting PDF file::
 
+    make pdf
+
+.. image:: docs/fig/orig-draft.png
