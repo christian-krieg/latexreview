@@ -15,10 +15,7 @@ Usage
 
 The body text of the original draft is (adapted from
 `Wikipeda <https://en.wikipedia.org/wiki/Wolf,_goat_and_cabbage_problem>`__)
-as follows:
-
-.. code-block:: tex
-   :linenos:
+as follows::
 
    \documentclass[a4paper,twoside] {article}
    \title{The wolf, the goat and the cabbage }
