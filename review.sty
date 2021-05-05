@@ -28,9 +28,14 @@
 % can do so like in the following example:
 %
 %   [...]
+%
+%   % 'pkg-opts' are passed to the underlying 'todonotes' package
+%   \usepackage[pkg-opts]{review}
+%
+%   [...]
 %   \begin{document}
     % Define reviewer; 'opts' are passed to underlying \todo command
-%    \reviewer[opts]{john}{blue}
+%   \reviewer[opts]{john}{blue}
 %   [...]
 %
 %
@@ -40,9 +45,6 @@
 %   which also work for the \johnhl[inline]{hilighted}{highlighted} version.
 %
 %   [...]
-%
-% This package also defines the 'done' command in order to mark a comment done,
-% but still to leave the comment in the LaTeX file for documentation purposes.
 %
 %------------------------------------------------------------------------------
 %
@@ -104,10 +106,6 @@
         \csname#2\endcsname[##1]{##3}}%
     \fi%
 }
-%
-%------------------------------------------------------------------------------
-%
-\newcommand{\done}[1]{}
 %
 %------------------------------------------------------------------------------
 %
