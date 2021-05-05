@@ -25,4 +25,6 @@ Now, lets have a look at the resulting PDF file::
 
     make pdf
 
+The reulting PDF file looks like this:
+
 .. image:: docs/fig/orig-draft.png
