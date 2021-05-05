@@ -60,32 +60,53 @@ In addition, Bob tags the original draft::
 
    git tag -a -m "Orginal draft of 'main' document" orig-draft
 
-Now, lets have a look at the resulting PDF file::
+Bob then pushes the repository to a remote place where Alice has access to it.
+
+Now, Alice adds some review comments. She decides it would be more appropriate
+to tell the story in present tense, and modifies the text accordingly. Also, she
+thinks it would be enough to have one paragraph for this fair amount of text.
+Besides other comments, she adds a comment at the top of the text, listing her
+general remarks for the text::
+
+   \documentclass[a4paper,twoside] {article}
+   \title{The wolf, the goat,\alice{Adding the Oxford comma here} and the cabbage}
+   \author{Bob Doe}
+   
+   \usepackage{newtodo}
+   \newtodo{alice}{purple}
+   \newtodo{bob}{yellow}
+   
+   \begin{document}
+   \maketitle
+   
+   \alice[inline]{ \textbf{General remarks:}
+       \begin{itemize}
+           \item{Let's transform everything to present tense; I already did that.}
+           \item{I think the text is short enough to have one paragraph instead of
+               three paragraphs. I changed that.}
+       \end{itemize}
+   }
+   
+   \alicehl{A farmer}{Shall we give him a name?} goes to a market and purchases a
+   wolf, a goat, and a cabbage. On his way home, the farmer comes to the bank of a
+   river and rents a boat. But crossing the river by boat, the farmer could carry
+   only himself and a single one of his purchases: the wolf, the goat, or the
+   cabbage.
+   %
+   If left unattended together, the wolf would eat the goat, or the goat would eat
+   the cabbage.
+   %
+   The farmer's challenge is to carry himself and his purchases to the far bank of
+   the river, leaving each purchase intact. How does he do it?
+   \end{document}
+
+Alice has a look at the reviewed document by calling ``make``:: 
 
    make pdf
 
-Now, Alice adds some review comments::
+The result is:
 
-   \alicehl{Lorem ipsum dolor}{Probably capitalize that part } sit amet,
-   consectetuer adipiscing elit. Ut purus elit, vestibulum ut, placerat ac,
-   adipiscing vitae, felis.
-   
-   \alice[inline]{I really like Latin.}
-   
-   Curabitur dictum gravida mauris. Nam arcu libero, nonummy eget, consectetuer
-   id, vulputate a, magna.  Donec vehicula augue eu neque. Pellentesque habitant
-   mobi\alice{use spell checker!} tristique senectus et netus et malesuada fames
-   ac turpis egestas. Mauris ut leo. Cras viverra metus rhoncus sem. Nulla et
-   lectus vestibulum urna fringilla ultrices. Phasellus eu tellus sit amet
-   tortor gravida placerat. Integer sapien est, iaculis in, pretium quis,
-   viverra ac, nunc.  Praesent eget sem vel leo ultrices bibendum. Aenean
-   faucibus. Morbi dolor nulla, malesuada eu, pulvinar at, mollis ac, nulla.
-   Curabitur auctor semper nulla.  Donec varius orci eget risus. Duis nibh mi,
-   congue eu, accumsan eleifend, sagittis quis, diam. Duis eget orci sit amet
-   orci dignissim rutrum.
 
-... and build the draft again::
-
-   make pdf
+.. image:: docs/fig/draft-reviewed-alice.png
 
 
