@@ -216,3 +216,102 @@ a tag ``reply1`` and pushes the result to the remote repository::
    git push origin alice-bob
 
 
+Alice pulls the updated review branch, generates a PDF as well as a diffed
+version of the PDF, and finds Bob's suggestion cool. She disables all review
+comments which have been addressed, comments on Bob's suggestion::
+
+   \documentclass[a4paper,twoside] {article}
+   \title{The wolf, the goat,\alice[disable]{Adding the Oxford comma here} and the cabbage}
+   \author{Bob Doe}
+
+   \usepackage{newtodo}
+   \newtodo{alice}{purple}
+   \newtodo{bob}{yellow}
+   
+   \begin{document}
+   \maketitle
+   
+   \alice[inline,disable]{ \textbf{General remarks:}
+       \begin{itemize}%
+           \item{Let's transform everything to present tense; I already did that.}%
+           \item{I think the text is short enough to have one paragraph instead of
+               three paragraphs. I changed that.}%
+       \end{itemize}%
+   }
+   
+   \alicehl[inline]{A farmer}{Shall we give him a name?
+       \bob[inline]{Good idea! I like `Bob' very much! Doesn't ``Farmer Bob'' sound
+           cool?
+           \alice[inline]{I like that! Let's do so!}
+       }
+   }
+   goes to a market and
+   purchases a wolf, a goat, and a cabbage. On his way home, the farmer comes to
+   the bank of a river and rents a boat. But crossing the river by boat, the farmer
+   could carry only himself and a single one of his purchases: the wolf, the goat,
+   or the cabbage.
+   %
+   If left unattended together, the wolf would eat the goat, or the goat would eat
+   the cabbage.
+   %
+   The farmer's challenge is to carry himself and his purchases to the far bank of
+   the river, leaving each purchase intact. How does he do it?
+   \end{document}
+
+Alice commits and pushes her changes::
+
+   git commit -m "Review2 of main document" main.tex
+   git tag -a -m "Review2 of main document" alice-bob-review2
+   git push --tags
+   git push origin alice-bob
+
+Bob pulls the reviewed document, and applies the changes as suggested by Alice::
+
+   \documentclass[a4paper,twoside] {article}
+   \title{The wolf, the goat,\alice[disable]{Adding the Oxford comma here} and the cabbage}
+   \author{Bob Doe}
+   
+   \usepackage{newtodo}
+   \newtodo{alice}{purple}
+   \newtodo{bob}{yellow}
+   
+   \begin{document}
+   \maketitle
+   
+   \alice[inline,disable]{ \textbf{General remarks:}
+       \begin{itemize}%
+           \item{Let's transform everything to present tense; I already did that.}%
+           \item{I think the text is short enough to have one paragraph instead of
+               three paragraphs. I changed that.}%
+       \end{itemize}%
+   }
+   
+   \alicehl[inline]{A farmer}{Shall we give him a name?
+       \bob[inline]{Good idea! I like `Bob' very much! Doesn't ``Farmer Bob'' sound
+           cool?
+           \alice[inline]{I like that! Let's do so!}
+       }
+   }
+   named Bob goes to a market and
+   purchases a wolf, a goat, and a cabbage. On his way home, Bob comes to
+   the bank of a river and rents a boat. But crossing the river by boat, Bob
+   could carry only himself and a single one of his purchases: the wolf, the goat,
+   or the cabbage.
+   %
+   If left unattended together, the wolf would eat the goat, or the goat would eat
+   the cabbage.
+   %
+   Bob's challenge is to carry himself and his purchases to the far bank of
+   the river, leaving each purchase intact. How does he do it?
+   \end{document}
+
+The diff looks lite this:
+
+.. image:: docs/fig/alice-bob-reply2.png
+
+Bob commits, tags, and pushes the result::
+
+   git commit -m "Reply 2 of main document" main.tex
+   git tag -a -m "Reply 2 of main document" alice-bob-reply2
+   git push --tags
+   git push origin alice-bob
