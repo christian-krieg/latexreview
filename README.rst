@@ -10,6 +10,19 @@ Overview
 Installation
 -------------------------------------------------------------------------------
 
+Review process
+-------------------------------------------------------------------------------
+
+In the following, we describe a method to carry out a review process using
+LaTeXreview between two actors `Alice` and `Bob`. In our scenario, Bob is the
+first author of a text, and Alice is the reviewer. The review starts with Bob's
+original draft, and is reviewed by Alice multiple times. With each review cycle,
+the text is improved until Alice has no more complaints. Then, the draft becomes
+final. The process is visualized below.
+
+.. image:: docs/fig/protocol.png
+
+
 Usage
 -------------------------------------------------------------------------------
 
@@ -125,7 +138,7 @@ branch to the remote repository::
    git checkout -b alice-review1_2021-05
    git commit -m "Added review comments" main.tex
    git tag -a -m "Review 1 by Alice of orginal draft of 'main' document" review-alice1
-   git push origin alice-review1
+   git push origin alice-bob-review1
    git push --tags
 
 
@@ -188,4 +201,5 @@ This results in the following PDF:
 
 .. image:: docs/fig/diff-bob-all.png
 
-
+Bob is satisfied, and he commits his reply to Alice's review. Again, he creates
+a tag ``reply1`` and pushes the result to the remote repository::

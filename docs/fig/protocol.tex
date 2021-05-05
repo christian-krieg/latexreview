@@ -1,0 +1,44 @@
+\begin{tikzpicture}[
+    x=1cm,
+    y=1cm,
+    ed/.style={->,>=stealth',shorten >= 2pt, shorten <= 2pt},
+]
+
+    \node (alice) at (0,0) {Alice};
+    \node (bob) at (10,0) {Bob};
+
+    \node (orig-draft) [below=of bob] {};
+    \node (lbl-orig-draft) at (orig-draft.east) [anchor=west] {orig-draft};
+
+    \node (review1) at (alice |- orig-draft) [yshift=-1cm]{};
+    \node (lbl-review1) at (review1.west) [anchor=east] {review1};
+
+    \node (reply1) at (bob |- review1) [yshift=-1cm]{};
+    \node (lbl-reply1) at (reply1.east) [anchor=west] {reply1};
+
+    \node (review2) at (alice |- reply1) [yshift=-1cm]{};
+    \node (lbl-review2) at (review2.west) [anchor=east] {review2};
+
+    \node (reply2) at (bob |- review2) [yshift=-1cm]{};
+    \node (lbl-reply2) at (reply2.east) [anchor=west] {reply2};
+
+    \node (reviewN) at (alice |- reply2) [yshift=-1cm]{};
+    \node (lbl-reviewN) at (reviewN.west) [anchor=east] {reviewN};
+
+    \node (replyN) at (bob |- reviewN) [yshift=-1cm]{};
+    \node (lbl-replyN) at (replyN.east) [anchor=west] {final-draft};
+
+    \node at ($(lbl-review2)!.5!(lbl-reviewN)$) {$\vdots$};
+    \node at ($(lbl-reply2)!.5!(lbl-replyN)$) {$\vdots$};
+
+    \draw[ed] (orig-draft) -- (review1);
+    \draw[ed] (review1) -- (reply1);
+    \draw[ed] (reply1) -- (review2);
+    \draw[ed] (review2) -- (reply2);
+    \draw[ed, dashed] (reply2) -- (reviewN);
+    \draw[ed] (reviewN) -- (replyN);
+
+    \draw[dashed] (alice) -- ++(0,-8cm);
+    \draw[dashed] (bob) -- ++(0,-8cm);
+
+\end{tikzpicture}
