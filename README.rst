@@ -118,3 +118,63 @@ while editing Bob's text::
 The result is:
 
 .. image:: docs/fig/diff-reviewed-alice.png
+
+Alice commits her changes into a new branch, tags the commit, and pushes the new
+branch to the remote repository::
+
+   git checkout -b alice-review1_2021-05
+   git commit -m "Added review comments" main.tex
+   git tag -a -m "Review 1 by Alice of orginal draft of 'main' document" review-alice1
+   git push origin alice-review1
+   git push --tags
+
+
+Bob pulls the repository, looks at the reviewed document, and replies to one of
+Alice's comments. He thinks that *Bob* would be a very good name for the farmer,
+so he suggests that in a review comment::
+
+   \documentclass[a4paper,twoside] {article}
+   \title{The wolf, the goat,\alice{Adding the Oxford comma here} and the cabbage}
+   \author{Bob Doe}
+   
+   \usepackage{newtodo}
+   \newtodo{alice}{purple}
+   \newtodo{bob}{yellow}
+   
+   \begin{document}
+   \maketitle
+   
+   \alice[inline]{ \textbf{General remarks:}
+       \begin{itemize}
+           \item{Let's transform everything to present tense; I already did that.}
+           \item{I think the text is short enough to have one paragraph instead of
+               three paragraphs. I changed that.}
+       \end{itemize}
+   }
+   
+   \alicehl[inline]{A farmer}{Shall we give him a name?
+       \bob[inline]{Good idea! I like `Bob' very much! Doesn't ``Farmer Bob'' sound
+           cool?
+       }
+   }
+   goes to a market and
+   purchases a wolf, a goat, and a cabbage. On his way home, the farmer comes to
+   the bank of a river and rents a boat. But crossing the river by boat, the farmer
+   could carry only himself and a single one of his purchases: the wolf, the goat,
+   or the cabbage.
+   %
+   If left unattended together, the wolf would eat the goat, or the goat would eat
+   the cabbage.
+   %
+   The farmer's challenge is to carry himself and his purchases to the far bank of
+   the river, leaving each purchase intact. How does he do it?
+   \end{document}
+
+Bob now reviews his changes that have happened since Alice's review::
+
+   make diff
+
+This results in the following PDF:
+
+.. image:: docs/fig/diff-bob.png
+
