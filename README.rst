@@ -27,6 +27,4 @@ Now, lets have a look at the resulting PDF file::
 
 The resulting PDF file looks like this:
 
-.. figure:: docs/fig/orig-draft.png
-   
-   Original draft, generated with ``make pdf``
+.. image:: docs/fig/orig-draft.png
