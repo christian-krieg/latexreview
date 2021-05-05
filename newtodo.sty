@@ -1,0 +1,105 @@
+%------------------------------------------------------------------------------
+%
+% This is the 'newtodo' package
+% 
+% Copyrright (c) 2021 Christian Krieg <christian@drkrieg.at>
+%
+% This program can be redistributed and/or modified under the terms
+% of the LaTeX Project Public License Distributed from CTAN archives
+% in directory macros/latex/base/lppl.txt.
+% 
+% Command to set up three commands for doing a review, based on the
+% 'todonotes' package. 'newtodo' takes two arguments:
+%
+% 1: Author name (one word, all lowercase)
+% 2: Color (understandable by the xcolor package)
+% 3: Additional options for \todo command
+%
+% The command defines three commands based on the arguments:
+%
+%     \<name>[todo-args]{todotext}
+%         Place a TODO note at margin
+%     \<name>hl[todo-args]{hl-text}{todotext}
+%         Place a TODO note at margin, highlighting text given as
+%         first argument
+%
+% Parameters to the \todo command can still be passed as optional
+% arguments; So, if you like to insert an inline TODO note, you
+% can do so like in the following example:
+%
+%   [...]
+%   \begin{document}
+    % Define TODO just once
+%    \newtodo{john}{blue}
+%   [...]
+%
+%
+    % Then use it in the text
+%   This is an example text\john{A nice text} \johnhl{worth reading}{ready for
+%   your enjoyment}. We show how to make a \john[inline]{review comment inline},
+%   which also work for the \johnhl[inline]{hilighted}{highlighted} version.
+%
+%   [...]
+%
+% This package also defines the 'done' command in order to mark a comment done,
+% but still to leave the comment in the LaTeX file for documentation purposes.
+%
+%------------------------------------------------------------------------------
+%
+\NeedsTeXFormat{LaTeX2e}[1994/06/01]
+\ProvidesPackage{newtodo}
+  [2021/05/03 v0.01 LaTeX package to define customized TODO noted]
+%
+%------------------------------------------------------------------------------
+%
+\RequirePackage[
+    colorinlistoftodos,
+    prependcaption,
+    textsize=footnotesize,
+    textwidth=1.75cm,
+]{todonotes}
+%\RequirePackage{xargs}
+\RequirePackage{setspace}
+\RequirePackage{soul}
+%
+%------------------------------------------------------------------------------
+%
+\newcommand{\newtodo}[2]{%
+%
+    % Define TODO note
+    \expandafter\newcommand\csname #1\endcsname[2][]{%
+        \todo[
+            color=#2,
+            backgroundcolor=#2!25,
+            bordercolor=#2!50,
+            linecolor=#2!50,
+            tickmarkheight = 1em,
+            author={\textbf{\expandafter\MakeUppercase #1}},
+            caption={},
+            noprepend,
+            fancyline,
+            ##1
+        ]{
+            \setstretch{1}##2
+    
+        }
+    }%
+    % Define highlighting TODO note
+    \makeatletter%
+        \if@todonotes@disabled%
+            \expandafter\newcommand\csname #1hl\endcsname[1][]{##1}%
+        \else%
+            \expandafter\newcommand\csname #1hl\endcsname[3][]{\hl{##2}\csname#1\endcsname[##1]{##3}}%
+        \fi%
+    \makeatother
+}
+%
+%------------------------------------------------------------------------------
+%
+\newcommand{\done}[1]{}
+%
+%------------------------------------------------------------------------------
+%
+\endinput
+%
+%------------------------------------------------------------------------------
