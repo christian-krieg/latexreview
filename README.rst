@@ -106,7 +106,15 @@ Alice has a look at the reviewed document by calling ``make``::
 
 The result is:
 
-
 .. image:: docs/fig/draft-reviewed-alice.png
 
+Alice can see her comments, but she does not see the changes she made on the fly
+in order to transform the text from past tense to present tense. Therefore,
+Alice calls ``make`` again to generate a PDF that shows the differences she made
+while editing Bob's text::
 
+   make diff
+
+The result is:
+
+.. image:: docs/fig/diff-reviewed-alice.png
