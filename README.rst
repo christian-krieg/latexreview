@@ -13,9 +13,10 @@ Installation
 Usage
 -------------------------------------------------------------------------------
 
-The body text of the original draft is (adapted from
-`Wikipeda <https://en.wikipedia.org/wiki/Wolf,_goat_and_cabbage_problem>`__)
-as follows::
+Bob's challenge is to write down the wolf, goat, and cabbage problem. He creates
+a file ``main.tex`` with all the essential meta-information (title and author),
+and drafts a first version to describe the problem (literally copied from
+`Wikipeda <https://en.wikipedia.org/wiki/Wolf,_goat_and_cabbage_problem>`__)::
 
    \documentclass[a4paper,twoside] {article}
    \title{The wolf, the goat and the cabbage }
@@ -40,13 +41,16 @@ as follows::
    of the river, leaving each purchase intact. How did he do it?
    \end{document}
 
-We commit our changes::
+Bob creates a git repository, adds his file ``main.tex``, and commits his
+changes::
 
+   git init
+   git add main.tex
    git commit -m "Added original draft of 'test' document"
 
-We tag the original draft::
+In addition, Bob tags the original draft::
 
-   git tag -a -m "Orginal draft of 'test' document" orig-draft
+   git tag -a -m "Orginal draft of 'main' document" orig-draft
 
 Now, lets have a look at the resulting PDF file::
 
