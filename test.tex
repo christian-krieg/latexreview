@@ -1,15 +1,17 @@
 \documentclass[a4paper,twoside] {article}
-\title{The wolf, the goat,\alice[disable]{Adding the Oxford comma here} and the cabbage}
+\title{The wolf, the goat,\alice[]{Adding the Oxford comma here} and the cabbage}
 \author{Bob Doe}
 
-\usepackage{newtodo}
-\newtodo{alice}{purple}
-\newtodo{bob}{yellow}
+%\usepackage[disable]{todonotes}
+%\usepackage[disable]{review}
+\usepackage[]{review}
+\reviewer[]{alice}{purple}
+\reviewer[]{bob}{yellow}
 
 \begin{document}
 \maketitle
 
-\alice[inline,disable]{ \textbf{General remarks:}
+\alice[inline]{ \textbf{General remarks:}
     \begin{itemize}%
         \item{Let's transform everything to present tense; I already did that.}%
         \item{I think the text is short enough to have one paragraph instead of
@@ -17,14 +19,14 @@
     \end{itemize}%
 }
 
-\alicehl[inline, disable]{A farmer}{Shall we give him a name?
+\alicehl[inline]{Farmer}{Shall we give him a name?
     \bob[inline]{Good idea! I like `Bob' very much! Doesn't ``Farmer Bob'' sound
         cool?
         \alice[inline]{I like that! Let's do so!}
     }
 }
-named Bob goes to a market and
-purchases a wolf, a goat, and a cabbage. On his way home, Bob comes to
+Bob goes to a market and
+purchases a wolf, a goat, and a cabbage. On his way home\bob{home?}, Bob comes to
 the bank of a river and rents a boat. But crossing the river by boat, Bob
 could carry only himself and a single one of his purchases: the wolf, the goat,
 or the cabbage.
@@ -34,4 +36,8 @@ the cabbage.
 %
 Bob's challenge is to carry himself and his purchases to the far bank of
 the river, leaving each purchase intact. How does he do it?
+
+%\makeatletter
+%\@nameuse{opt@newtodo.sty}
+%\makeatother
 \end{document}
