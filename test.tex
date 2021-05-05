@@ -1,120 +1,22 @@
-% !TeX spellcheck = en_US
-%----------------------------------------------------------------------------
-%
-%   This LaTeX template was created by Christian Krieg
-%       <christian.krieg@alumni.tuwien.ac.at>
-%
-% This template is licensed under the following license: Attribution 4.0
-% International (CC BY 4.0)
-%
-%
-% You are free to:
-%
-%   1. Share --- Copy and redistribute the material in any medium or format
-%   2. Adapt --- Remix, transform, and build upon the material for any purpose,
-%           even commercially.
-%
-% This license is acceptable for Free Cultural Works.
-%
-% The licensor cannot revoke these freedoms as long as you follow the license
-% terms.
-%
-% The entire license text is available at:
-%   https://creativecommons.org/licenses/by/4.0/legalcode
-%
-%   May 2021
-%
-%----------------------------------------------------------------------------
-%
-\documentclass[%
-	a4paper,%
-	twoside%
-] {article}
-%
-%----------------------------------------------------------------------------
-%
-% Title
-%
-\title{\LaTeX review made transparent with \emph{todonotes}, and \emph{git-latexdiff}}
-%
-%----------------------------------------------------------------------------
-%
-% Author
-%
-\author{Christian Krieg <christian@drkrieg.at>}
-%
-%-----------------------------------------------------------------------------
-%
-% Use the 'Libertine' font type
-%
-\usepackage{libertine}
-\usepackage[T1]{fontenc}
-\usepackage[utf8]{inputenc}
-%
-%----------------------------------------------------------------------------
-%
-% Set page margins - original: 2cm
-%
-\usepackage{geometry}
-\geometry{
-    left = 2cm,
-    right = 2cm,
-    top = 2cm,
-    bottom = 2cm,
-    marginparwidth=1.75cm,
-}
-%
-%----------------------------------------------------------------------------
-%
-% Set line spacing
-%
-\usepackage{setspace}
-\setstretch{1.5}
-%
-%----------------------------------------------------------------------------
-%
-% Set paragraph: No indentation, but include an empty line
-%
-\usepackage[parfill]{parskip}
-%
-%----------------------------------------------------------------------------
-%
-% Define a TODO and a DONE command - simpleToDo -> stodo
-%
-\newcommand{\stodo}[1]{\textcolor{red}{\textbf{TODO: }~#1}}
-%
-%----------------------------------------------------------------------------
-%
-% Commands to set up review comments
-%
-\usepackage{newtodo}
+\documentclass[a4paper,twoside] {article}
+\title{The wolf, the goat and the cabbage }
+\author{Bob Doe}
 
+\usepackage{newtodo}
 \newtodo{alice}{purple}
 \newtodo{bob}{yellow}
-%
-%----------------------------------------------------------------------------
-%
-% Document body
-%
-\usepackage{lipsum}
-\begin{document}
 
+\begin{document}
 \maketitle
 
-Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Ut purus elit,
-vestibulum ut, placerat ac, adipiscing vitae, felis.  Curabitur dictum gravida
-mauris. Nam arcu libero, nonummy eget, consectetuer id, vulputate a, magna.
-Donec vehicula augue eu neque. Pellentesque habitant mobi tristique senectus et
-netus et malesuada fames ac turpis egestas. Mauris ut leo. Cras viverra metus
-rhoncus sem. Nulla et lectus vestibulum urna fringilla ultrices. Phasellus eu
-tellus sit amet tortor gravida placerat. Integer sapien est, iaculis in,
-pretium quis, viverra ac, nunc.  Praesent eget sem vel leo ultrices bibendum.
-Aenean faucibus. Morbi dolor nulla, malesuada eu, pulvinar at, mollis ac,
-nulla.  Curabitur auctor semper nulla.  Donec varius orci eget risus. Duis nibh
-mi, congue eu, accumsan eleifend, sagittis quis, diam. Duis eget orci sit amet
-orci dignissim rutrum.
+Once upon a time a farmer went to a market and purchased a wolf, a goat, and
+a cabbage. On his way home, the farmer came to the bank of a river and rented
+a boat. But crossing the river by boat, the farmer could carry only himself
+and a single one of his purchases: the wolf, the goat, or the cabbage.
 
+If left unattended together, the wolf would eat the goat, or the goat would
+eat the cabbage.
 
+The farmer's challenge was to carry himself and his purchases to the far bank
+of the river, leaving each purchase intact. How did he do it?
 \end{document}
-%
-%----------------------------------------------------------------------------
