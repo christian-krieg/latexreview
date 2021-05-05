@@ -315,3 +315,27 @@ Bob commits, tags, and pushes the result::
    git tag -a -m "Reply 2 of main document" alice-bob-reply2
    git push --tags
    git push origin alice-bob
+
+Alice pulls the changes, reviews them again, and finds all review comments
+applied in Bob's text. She disables the last pending comment::
+
+
+Then she commits the result, and tags the commit as final draft::
+
+   git commit -m "Final review of main document" main.tex
+   git tag -a -m "Final draft of main document" alice-bob-final-draft
+   git push --tags
+   git push origin alice-bob
+
+The final diff looks like this:
+
+.. image:: docs/fig/final-draft.png
+
+Bob reviews all changes that have been applied to the original draft by calling
+make with the COMMIT set to the tag name of the original draft::
+
+   make diff COMMIT=orig-draft
+
+This is the total diff:
+
+.. image:: docs/fig/final-draft-all.png
