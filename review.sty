@@ -79,7 +79,9 @@
 \newcommand{\reviewer}[3][]{%
 %
     % Define TODO note
+    % Back links from: Andreas Plank, 'todonotes' manual, v1.1.2, p. 16
     \expandafter\newcommand\csname #2\endcsname[2][]{%
+%        \todoTrans[
         \todonum[
             color=#3,
             backgroundcolor=#3!25,
@@ -87,15 +89,15 @@
             linecolor=#3!50,
             tickmarkheight = 1em,
             author={\textbf{\expandafter\MakeUppercase #2}},
-            caption={(\thetodocounter) \expandafter\MakeUppercase #2},
+            caption={\protect\hypertarget{todo\thetodocounter}{(\thetodocounter) \expandafter\MakeUppercase #2}},
             noprepend,
             fancyline,
             #1,
             ##1,
-        ]{
-            \setstretch{1}##2
-    
-        }
+        ]{%
+            \setstretch{1}##2\hfill%
+            \hyperlink{todo\thetodocounter}{$\uparrow$}%
+        }%
     }%
     % Define highlighting TODO note. Only print the selected text as-is if todo
     % notes are disabled globally by the 'disable' package option
@@ -116,9 +118,23 @@
 
 % From: The 'todonotes' manual, v1.1.2, p. 13
 \newcounter{todocounter}
-\newcommand{\todonum}[2][]{
-    \stepcounter{todocounter}\todo[#1]{(\thetodocounter) #2}
+\newcommand{\todonum}[2][]{%
+    \stepcounter{todocounter}\todo[#1]{(\thetodocounter) #2}%
 }
+
+% From: Andreas Plank, 'todonotes' manual, v1.1.2, p. 16
+% Define a counter for the inserted todonotes.
+%\newcounter{todoListItems}
+%\newcommand{\todoTrans}[2][]{%
+%    % Increment counter
+%    \addtocounter{todoListItems}{1}%
+%    \todonum[%
+%        caption={\protect\hypertarget{todo\thetodoListItems}{}Translation}, #1
+%    ]{%
+%        #2 \hfill
+%        \hyperlink{todo\thetodoListItems}{$\uparrow$}
+%    }%
+%}
 %
 %------------------------------------------------------------------------------
 %
