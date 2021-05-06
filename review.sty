@@ -68,9 +68,8 @@
     prependcaption,
     textsize=footnotesize,
     textwidth=1.75cm,
-    \@nameuse{opt@review.sty},
+    \@nameuse{opt@review.sty}, % This passes the 'review' package options
 ]{todonotes}
-%\RequirePackage{xargs}
 \RequirePackage{setspace}
 \RequirePackage{soul}
 \RequirePackage{xstring}
@@ -81,20 +80,20 @@
 %
     % Define TODO note
     \expandafter\newcommand\csname #2\endcsname[2][]{%
-        \todo[
+        \todonum[
             color=#3,
             backgroundcolor=#3!25,
             bordercolor=#3!50,
             linecolor=#3!50,
             tickmarkheight = 1em,
             author={\textbf{\expandafter\MakeUppercase #2}},
-            caption={},
+            caption={(\thetodocounter) \expandafter\MakeUppercase #2},
             noprepend,
             fancyline,
             #1,
             ##1,
         ]{
-            \setstretch{1}##2 \@nameuse{opt@review.sty}
+            \setstretch{1}##2
     
         }
     }%
@@ -113,6 +112,12 @@
             }%
         \csname#2\endcsname[##1]{##3}}%
     \fi%
+}
+
+% From: The 'todonotes' manual, v1.1.2, p. 13
+\newcounter{todocounter}
+\newcommand{\todonum}[2][]{
+    \stepcounter{todocounter}\todo[#1]{(\thetodocounter) #2}
 }
 %
 %------------------------------------------------------------------------------
