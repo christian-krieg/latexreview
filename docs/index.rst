@@ -10,6 +10,7 @@ Welcome to latexreview's documentation!
    :maxdepth: 2
    :caption: Contents:
 
+   README.rst
    review-process.rst
 
 

@@ -1,4 +1,4 @@
-LaTeXreview
+Review process
 ===============================================================================
 
 This project provides utilities and a workflow to make reviews of LaTeX
@@ -20,7 +20,7 @@ original draft, and is reviewed by Alice multiple times. With each review cycle,
 the text is improved until Alice has no more complaints. Then, the draft becomes
 final. The process is visualized below.
 
-.. image:: docs/fig/protocol.png
+.. image:: fig/protocol.png
 
 
 Usage
@@ -60,7 +60,7 @@ Bob builds his document using ``make``::
 
 The result looks like this:
 
-.. image:: docs/fig/orig-draft.png
+.. image:: fig/orig-draft.png
 
 Bob creates a git repository, adds his file ``main.tex``, and commits his
 changes::
@@ -119,7 +119,7 @@ Alice has a look at the reviewed document by calling ``make``::
 
 The result is:
 
-.. image:: docs/fig/draft-reviewed-alice.png
+.. image:: fig/draft-reviewed-alice.png
 
 Alice can see her comments, but she does not see the changes she made on the fly
 in order to transform the text from past tense to present tense. Therefore,
@@ -130,7 +130,7 @@ while editing Bob's text::
 
 The result is:
 
-.. image:: docs/fig/diff-reviewed-alice.png
+.. image:: fig/diff-reviewed-alice.png
 
 Alice commits her changes into a new branch, tags the commit, and pushes the new
 branch to the remote repository::
@@ -195,7 +195,7 @@ Bob now reviews his changes that have happened since Alice's review::
 
 This results in the following PDF:
 
-.. image:: docs/fig/diff-bob.png
+.. image:: fig/diff-bob.png
 
 To view all changes made since he submitted his original draft for Alice to
 review, Bob sets the ``COMMIT`` variable to the tag he created at submission
@@ -205,7 +205,7 @@ time::
 
 This results in the following PDF:
 
-.. image:: docs/fig/diff-bob-all.png
+.. image:: fig/diff-bob-all.png
 
 Bob is satisfied, and he commits his reply to Alice's review. Again, he creates
 a tag ``reply1`` and pushes the result to the remote repository::
@@ -307,7 +307,7 @@ Bob pulls the reviewed document, and applies the changes as suggested by Alice::
 
 The diff looks lite this:
 
-.. image:: docs/fig/alice-bob-reply2.png
+.. image:: fig/alice-bob-reply2.png
 
 Bob commits, tags, and pushes the result::
 
@@ -319,6 +319,7 @@ Bob commits, tags, and pushes the result::
 Alice pulls the changes, reviews them again, and finds all review comments
 applied in Bob's text. She disables the last pending comment::
 
+   ADD ME!
 
 Then she commits the result, and tags the commit as final draft::
 
@@ -329,7 +330,7 @@ Then she commits the result, and tags the commit as final draft::
 
 The final diff looks like this:
 
-.. image:: docs/fig/final-draft.png
+.. image:: fig/final-draft.png
 
 Bob reviews all changes that have been applied to the original draft by calling
 make with the COMMIT set to the tag name of the original draft::
@@ -338,4 +339,4 @@ make with the COMMIT set to the tag name of the original draft::
 
 This is the total diff:
 
-.. image:: docs/fig/final-draft-all.png
+.. image:: fig/final-draft-all.png
