@@ -121,20 +121,6 @@
 \newcommand{\todonum}[2][]{%
     \stepcounter{todocounter}\todo[#1]{(\thetodocounter) #2}%
 }
-
-% From: Andreas Plank, 'todonotes' manual, v1.1.2, p. 16
-% Define a counter for the inserted todonotes.
-%\newcounter{todoListItems}
-%\newcommand{\todoTrans}[2][]{%
-%    % Increment counter
-%    \addtocounter{todoListItems}{1}%
-%    \todonum[%
-%        caption={\protect\hypertarget{todo\thetodoListItems}{}Translation}, #1
-%    ]{%
-%        #2 \hfill
-%        \hyperlink{todo\thetodoListItems}{$\uparrow$}
-%    }%
-%}
 %
 %------------------------------------------------------------------------------
 %
