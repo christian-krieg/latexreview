@@ -11,6 +11,8 @@ LaTeX-Review
    :caption: Contents:
 
    process
+   review-process
+   README
 
 
 Indices and tables
