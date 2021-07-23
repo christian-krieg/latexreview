@@ -1,0 +1,8 @@
+sphinx
+sphinx-rtd-theme
+sphinxcontrib-tikz
+sphinxcontrib-bibtex
+sphinxcontrib-seqdiag
+sphinxcontrib-actdiag
+sphinxcontrib-nwdiag
+sphinx-copybutton

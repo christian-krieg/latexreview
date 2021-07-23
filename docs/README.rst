@@ -7,8 +7,13 @@ documents straight-forward, transparent, and reproducible.
 Usage example
 -------------------------------------------------------------------------------
 
-The following example given briefly demonstrates the common use case of
-`LaTeXreview`::
+The following example given in :numref:`lst#mwe-complete` briefly demonstrates
+the common use case of `LaTeXreview`:
+
+.. code-block:: tex
+   :linenos:
+   :caption: Minimal working example to demonstrate the power of LaTeXreview
+   :name: lst#mwe-complete
 
    \documentclass[a4paper] {article}
    \title{The wolf, the goat,\alice[]{Adding the Oxford comma here} and the cabbage}
@@ -65,10 +70,16 @@ Create PDF (including comments)::
 
    make pdf
 
-.. image::  docs/fig/test-all-comments.png
+.. image:: fig/test-all-comments.png
 
 
-When we disable all review comments in the example above::
+When we disable all review comments in :numref:`lst#mwe-complete` as given in
+:numref:`lst#disable-all`:
+
+.. code-block:: tex
+   :linenos:
+   :caption: Disable all review comments
+   :name: lst#disable-all
 
    [...]
    \usepackage[disable]{review}
@@ -80,7 +91,7 @@ When we disable all review comments in the example above::
 
 The result looks like this:
 
-.. image:: docs/fig/test-disable-all.png
+.. image:: fig/test-disable-all.png
 
 
 We can see the differences between the current working tree, and the original
@@ -90,8 +101,8 @@ draft::
 
 Either with review comments included:
 
-.. image::  docs/fig/diff-all-comments.png
+.. image:: fig/diff-all-comments.png
 
 Or without review comments included:
 
-.. image::  docs/fig/diff-disable-all.png
+.. image:: fig/diff-disable-all.png
